@@ -44,27 +44,22 @@ public class HardInput {
         i1.value = v1;
         i1.weight = w1;
         i1.name = item1;
-        i1.taken = false;
         
         i2.value = v2;
         i2.weight = w2;
         i2.name = item2;
-        i2.taken = false;
         
         i3.value = v3;
         i3.weight = w3;
         i3.name = item3;
-        i3.taken = false;
-        
+
         i4.value = v4;
         i4.weight = w4;
         i4.name = item4;
-        i4.taken = false;
         
         i5.value = v5;
         i5.weight = w5;
         i5.name = item5;
-        i5.taken = false;
     }
     
     public ItemCollection getItems(){
