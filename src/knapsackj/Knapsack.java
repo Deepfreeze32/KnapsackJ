@@ -24,6 +24,13 @@ public class Knapsack
         capacity = 1;
         items = new ArrayList<Item>();
     }
+    
+    public Knapsack(ItemCollection ic) 
+    {
+        items = ic.items;
+        capacity = ic.capacity;
+        Collections.sort(items);
+    }
 
     public Knapsack(int size, List<Item> itemList) 
     {
@@ -158,7 +165,7 @@ public class Knapsack
     public Inventory solveExhaustively() 
     {
         int availableCapacity = capacity;
-        return solveExhaustivelyRecursively(0, capacity, new ArrayList<Double>(), 0);
+        return solveExhaustivelyRecursively(0, availableCapacity, new ArrayList<Double>(), 0);
     }
 
     private Inventory solveExhaustivelyRecursively(int nextItemIndex, int availableCapacity, ArrayList<Double> result, int value) 
