@@ -35,31 +35,11 @@ public class HardInput {
         int v4 = 1;
         int v5 = 18;
         
-        Item i1 = null;
-        Item i2 = null;
-        Item i3 = null;
-        Item i4 = null;
-        Item i5 = null;
-        
-        i1.value = v1;
-        i1.weight = w1;
-        i1.name = item1;
-        
-        i2.value = v2;
-        i2.weight = w2;
-        i2.name = item2;
-        
-        i3.value = v3;
-        i3.weight = w3;
-        i3.name = item3;
-
-        i4.value = v4;
-        i4.weight = w4;
-        i4.name = item4;
-        
-        i5.value = v5;
-        i5.weight = w5;
-        i5.name = item5;
+        Item i1 = new Item(w1,v1,item1);
+        Item i2 = new Item(w2,v2,item2);
+        Item i3 = new Item(w3,v3,item3);
+        Item i4 = new Item(w4,v4,item4);
+        Item i5 = new Item(w5,v5,item5);
     }
     
     public ItemCollection getItems(){
