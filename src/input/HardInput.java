@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package input;
 
 import java.util.ArrayList;
@@ -9,11 +5,15 @@ import knapsackj.Item;
 import knapsackj.ItemCollection;
 
 /**
- *
+ * A default input class for KnapsackJ. Constructs a data set of 5 items.
  * @author tcc10a
  */
 public class HardInput {
     private ArrayList<Item> items;
+    
+    /**
+     * Default constructor. Builds a collection of items.
+     */
     
     public HardInput() {
         items = new ArrayList<Item>(5);

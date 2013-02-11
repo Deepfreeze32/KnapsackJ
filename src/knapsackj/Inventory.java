@@ -1,13 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package knapsackj;
 
 import java.util.ArrayList;
 
 /**
- *
+ * The Inventory class. Designates a configuration of a knapsack.
  * @author tcc10a
  */
 public class Inventory 
@@ -17,6 +13,12 @@ public class Inventory
     private static final int NULL = -1;
     private double totalValue = NULL;
 
+    /**
+     * Normal constructor.
+     * @param backpack Knapsack to take from.
+     * @param desiredAmounts Desired configuration.
+     */
+    
     @SuppressWarnings("UnusedAssignment")
     public Inventory(Knapsack backpack, ArrayList<Double> desiredAmounts) {
         if (backpack == null) {
@@ -38,15 +40,33 @@ public class Inventory
         }
     }
 
-    public Inventory(Knapsack backpack, ArrayList<Double> desiredAmounts, double benefit) {
+    /**
+     * Construct an inventory.
+     * @param backpack Knapsack to take from.
+     * @param desiredAmounts Amounts to use.
+     * @param val Value known. 
+     */
+    
+    public Inventory(Knapsack backpack, ArrayList<Double> desiredAmounts, double val) {
+        //Invoke the other constructor.
         this(backpack, desiredAmounts);
-        totalValue = benefit;
+        totalValue = val;
     }
 
+    /**
+     * Get the configuration of the Inventory.
+     * @return 
+     */
+    
     public ArrayList<Double> getAmounts() {
         return new ArrayList<Double>(amounts);
     }
 
+    /**
+     * Get the total value of the Inventory.
+     * @return the value of the inventory.
+     */
+    
     public double getTotalValue() {
         if (totalValue == NULL) {
             return knapsack.getTotalValue(new ArrayList<Double>(amounts));
@@ -56,9 +76,7 @@ public class Inventory
     }
 
     /**
-     * Returns a string representing the list of amounts of each item in the
-     * packing
-     *
+     * Stringiy the Inventory.
      * @return the string
      */
     @Override

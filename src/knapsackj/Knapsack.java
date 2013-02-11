@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package knapsackj;
 
 import java.util.ArrayList;
@@ -9,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * The actual Knapsack.
+ * The actual Knapsack. Where all the fun happens.
  *
  * @author tcc10a
  */
@@ -18,12 +14,20 @@ public class Knapsack
     private ArrayList<Item> items;
     private int capacity;
 
-
+    /**
+     * Default constructor. Mostly useless.
+     */
+    
     public Knapsack() 
     {
         capacity = 1;
         items = new ArrayList<Item>();
     }
+    
+    /**
+     * Constructor. Takes an ItemCollection. 
+     * @param ic An ItemCollection to take as input.
+     */
     
     public Knapsack(ItemCollection ic) 
     {
@@ -32,6 +36,12 @@ public class Knapsack
         Collections.sort(items);
     }
 
+    /**
+     * More direct constructor. Takes a generic list and capacity.
+     * @param size The capacity to be used in this knapsack.
+     * @param itemList The list of items to use.
+     */
+    
     public Knapsack(int size, List<Item> itemList) 
     {
         capacity = size;
@@ -39,23 +49,45 @@ public class Knapsack
         Collections.sort(items);
     }
 
+    /**
+     * Copy constructor. Can resize capacity if desired.
+     * @param newSize The capacity to resize to.
+     * @param knapsack The old knapsack.
+     */
+    
     public Knapsack(int newSize, Knapsack knapsack) 
     {
         capacity = newSize;
         items = knapsack.items;
     }
 
+    /**
+     * Get size of the knapsack.
+     * @return The size.
+     */
+    
     public int size() 
     {
         return items.size();
     }
 
+    /**
+     * Stringify the Knapsack.
+     * @return The Knapsack in String form.
+     */
+    
     @Override
     public String toString() 
     {
         return capacity + ": " + items;
     }
 
+    /**
+     * Calculates the total value given a configuration of items.
+     * @param amounts The amount taken of each item.
+     * @return The total value of this solution.
+     */
+    
     public double getTotalValue(ArrayList<Double> amounts) 
     {
         double total = 0;
@@ -73,6 +105,11 @@ public class Knapsack
         return total;
     }
 
+    /**
+     * Function to solve Knapsack using fractional ratios.
+     * @return An Inventory object containing the best solution.
+     */
+    
     public Inventory solveFractional() 
     {
         int availableCapacity = capacity;
@@ -94,6 +131,11 @@ public class Knapsack
         return new Inventory(this, amounts);
     }
 
+    /**
+     * Function to solve Knapsack using a greedy algorithm.
+     * @return An Inventory object containing the best solution.
+     */
+    
     public Inventory solveGreedily() 
     {
         int availableCapacity = capacity;
@@ -117,6 +159,11 @@ public class Knapsack
         return new Inventory(this, amounts);
     }
 
+    /**
+     * Function to solve Knapsack using dynamic programming.
+     * @return An Inventory object containing the best solution.
+     */
+    
     public Inventory solveDynamically() 
     {
         int[] solution = new int[capacity + 1];
@@ -162,18 +209,33 @@ public class Knapsack
         return new Inventory(this, amounts);
     }
 
+    /**
+     * The starting point for exhaustive search.
+     * @return The Inventory object containing the best solution.
+     */
+    
     public Inventory solveExhaustively() 
     {
         int availableCapacity = capacity;
         return solveExhaustivelyRecursively(0, availableCapacity, new ArrayList<Double>(), 0);
     }
 
+    /**
+     * The recursive function used to solve Knapsack recursively.
+     * @param nextItemIndex The next index to use.
+     * @param availableCapacity The remaining capacity of the knapsack.
+     * @param result The resulting amounts of items. This is passed around.
+     * @param value The running total.
+     * @return An Inventory object containing the current configuration.
+     */
+    
     private Inventory solveExhaustivelyRecursively(int nextItemIndex, int availableCapacity, ArrayList<Double> result, int value) 
     {
         if (nextItemIndex >= items.size()) 
         {
             return new Inventory(this, result, value);
         }
+        
         Item nextItem = items.get(nextItemIndex);
 
         result.add(0.0);
