@@ -16,8 +16,10 @@ public class KnapsackJ {
         // TODO code application logic here
         HardInput in = new HardInput();
         ItemCollection items = in.getItems();
+        //System.out.println(items.toString());
         Knapsack k = new Knapsack(items);
-        Inventory i = k.solveExhaustively();
+        //System.out.println(k.toString());
+        Inventory i = k.solveDynamically();
         System.out.println(i.toString());
     }
 }

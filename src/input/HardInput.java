@@ -16,7 +16,7 @@ public class HardInput {
      */
     
     public HardInput() {
-        items = new ArrayList<Item>(5);
+        items = new ArrayList<Item>();
         String item1 = "A";
         String item2 = "B";
         String item3 = "C";
@@ -40,9 +40,17 @@ public class HardInput {
         Item i3 = new Item(w3,v3,item3);
         Item i4 = new Item(w4,v4,item4);
         Item i5 = new Item(w5,v5,item5);
+        
+        items = new ArrayList<Item>(5);
+        items.add(i1);
+        items.add(i2);
+        items.add(i3);
+        items.add(i4);
+        items.add(i5);
+        //System.out.println(items.toString());
     }
     
     public ItemCollection getItems(){
-        return new ItemCollection(items,13);
+        return new ItemCollection(items,20);
     }
 }

@@ -30,7 +30,7 @@ public class Item implements Comparable<Item>
      */
     
     public Item(int wei, int val, String n) {
-        if (weight > 0) 
+        if (wei > 0) 
         {
             weight = wei;
             value = val;

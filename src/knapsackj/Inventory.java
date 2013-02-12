@@ -55,7 +55,7 @@ public class Inventory
 
     /**
      * Get the configuration of the Inventory.
-     * @return 
+     * @return the configuration of the inventory.
      */
     
     public ArrayList<Double> getAmounts() {
@@ -76,7 +76,7 @@ public class Inventory
     }
 
     /**
-     * Stringiy the Inventory.
+     * Stringify the Inventory.
      * @return the string
      */
     @Override
