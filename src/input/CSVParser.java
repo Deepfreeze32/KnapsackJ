@@ -40,6 +40,7 @@ public class CSVParser
                 if (first) 
                 {
                     cap = Integer.parseInt(strArr[0]);
+                    first = false;
                 } else {
                     int weight = Integer.parseInt(strArr[0]);
                     int value = Integer.parseInt(strArr[1]);
