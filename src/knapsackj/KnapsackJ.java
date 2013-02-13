@@ -1,5 +1,6 @@
 package knapsackj;
 
+import input.CSVParser;
 import input.HardInput;
 
 /**
@@ -16,8 +17,16 @@ public class KnapsackJ
     public static void main(String[] args) 
     {
         // TODO code application logic here
-        HardInput in = new HardInput();
-        ItemCollection items = in.getItems();
+        ItemCollection items = null;
+        if (args.length == 0)
+        {
+            HardInput in = new HardInput();
+            items = in.getItems();
+        } else {
+            CSVParser csv = new CSVParser(args[0]);
+            items = csv.parse();
+        }
+       
         //System.out.println(items.toString());
         KnapsackSolver ks = new KnapsackSolver(items);
         System.out.println("Exhaustive solution:");
