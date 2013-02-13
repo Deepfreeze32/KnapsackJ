@@ -8,14 +8,16 @@ import knapsackj.ItemCollection;
  * A default input class for KnapsackJ. Constructs a data set of 5 items.
  * @author tcc10a
  */
-public class HardInput {
+public class HardInput 
+{
     private ArrayList<Item> items;
     
     /**
      * Default constructor. Builds a collection of items.
      */
     
-    public HardInput() {
+    public HardInput() 
+    {
         items = new ArrayList<Item>();
         String item1 = "A";
         String item2 = "B";

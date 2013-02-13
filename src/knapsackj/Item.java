@@ -9,14 +9,14 @@ public class Item implements Comparable<Item>
 {
     public int weight;
     public int value;
-    
     public String name;
     
     /**
      * Default constructor. Sets weight to 1, value to 0, name to null.
      */
     
-    public Item() {
+    public Item() 
+    {
         weight = 1;
         value = 0;
         name = null;
@@ -29,7 +29,8 @@ public class Item implements Comparable<Item>
      * @param n the name of this item.
      */
     
-    public Item(int wei, int val, String n) {
+    public Item(int wei, int val, String n) 
+    {
         if (wei > 0) 
         {
             weight = wei;
@@ -49,7 +50,8 @@ public class Item implements Comparable<Item>
      * @return item's weight
      */
     
-    public int getWeight() {
+    public int getWeight() 
+    {
         return weight;
     }
 
@@ -58,7 +60,8 @@ public class Item implements Comparable<Item>
      * @return item's value
      */
     
-    public int getValue() {
+    public int getValue() 
+    {
         return value;
     }
 
@@ -68,7 +71,8 @@ public class Item implements Comparable<Item>
      */
     
     @Override
-    public String toString() {
+    public String toString() 
+    {
         return name + ": " + value + "/" + weight;
     }
 
@@ -81,7 +85,8 @@ public class Item implements Comparable<Item>
      */
     
     @Override
-    public int compareTo(Item i) {
+    public int compareTo(Item i) 
+    {
         return (int) Math.signum(weight * i.value - value * i.weight);
     }
 }

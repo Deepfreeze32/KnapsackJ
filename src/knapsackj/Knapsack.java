@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class Knapsack 
 {
-    private ArrayList<Item> items;
+    public ArrayList<Item> items;
     private int capacity;
 
     /**
@@ -144,6 +144,7 @@ public class Knapsack
         {
             return new Inventory(this, amounts);
         }
+        
         for (Item i : items) 
         {
             if (availableCapacity < i.getWeight()) 
