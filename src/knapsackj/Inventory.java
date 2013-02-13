@@ -4,10 +4,11 @@ import java.util.ArrayList;
 
 /**
  * The Inventory class. Designates a configuration of a knapsack.
+ *
  * @author tcc10a
  */
-public class Inventory 
-{
+public class Inventory {
+
     private ArrayList<Double> amounts;
     private Knapsack knapsack;
     private static final int NULL = -1;
@@ -15,13 +16,12 @@ public class Inventory
 
     /**
      * Normal constructor.
+     *
      * @param backpack Knapsack to take from.
      * @param desiredAmounts Desired configuration.
      */
-    
     @SuppressWarnings("UnusedAssignment")
-    public Inventory(Knapsack backpack, ArrayList<Double> desiredAmounts) 
-    {
+    public Inventory(Knapsack backpack, ArrayList<Double> desiredAmounts) {
         if (backpack == null) {
             backpack = new Knapsack();
         } else {
@@ -32,11 +32,9 @@ public class Inventory
         } else {
             amounts = new ArrayList<Double>(desiredAmounts);
         }
-        
-        if (amounts.size() < knapsack.size()) 
-        {
-            for (int i = amounts.size(); i < knapsack.size(); i++) 
-            {
+
+        if (amounts.size() < knapsack.size()) {
+            for (int i = amounts.size(); i < knapsack.size(); i++) {
                 amounts.add(0.0);
             }
         }
@@ -44,13 +42,12 @@ public class Inventory
 
     /**
      * Construct an inventory.
+     *
      * @param backpack Knapsack to take from.
      * @param desiredAmounts Amounts to use.
-     * @param val Value known. 
+     * @param val Value known.
      */
-    
-    public Inventory(Knapsack backpack, ArrayList<Double> desiredAmounts, double val) 
-    {
+    public Inventory(Knapsack backpack, ArrayList<Double> desiredAmounts, double val) {
         //Invoke the other constructor.
         this(backpack, desiredAmounts);
         totalValue = val;
@@ -58,21 +55,19 @@ public class Inventory
 
     /**
      * Get the configuration of the Inventory.
+     *
      * @return the configuration of the inventory.
      */
-    
-    public ArrayList<Double> getAmounts() 
-    {
+    public ArrayList<Double> getAmounts() {
         return new ArrayList<Double>(amounts);
     }
 
     /**
      * Get the total value of the Inventory.
+     *
      * @return the value of the inventory.
      */
-    
-    public double getTotalValue() 
-    {
+    public double getTotalValue() {
         if (totalValue == NULL) {
             return knapsack.getTotalValue(new ArrayList<Double>(amounts));
         } else {
@@ -82,11 +77,11 @@ public class Inventory
 
     /**
      * Stringify the Inventory.
+     *
      * @return the string
      */
     @Override
-    public String toString() 
-    {
+    public String toString() {
         return amounts.toString();
     }
 }
