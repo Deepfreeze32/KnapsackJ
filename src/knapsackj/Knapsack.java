@@ -195,33 +195,33 @@ public class Knapsack {
     /**
      * The recursive function used to solve Knapsack recursively.
      *
-     * @param nextItemIndex The next index to use.
-     * @param availableCapacity The remaining capacity of the knapsack.
+     * @param indexOfNextItem The next index to use.
+     * @param remainingCapacity The remaining capacity of the knapsack.
      * @param result The resulting amounts of items. This is passed around.
      * @param value The running total.
      * @return An Inventory object containing the current configuration.
      */
-    private Inventory solveExhaustivelyRecursively(int nextItemIndex, int availableCapacity, ArrayList<Double> result, int value) {
-        if (nextItemIndex >= items.size()) {
+    private Inventory solveExhaustivelyRecursively(int indexOfNextItem, int remainingCapacity, ArrayList<Double> result, int value) {
+        if (indexOfNextItem >= items.size()) {
             return new Inventory(this, result, value);
         }
 
-        Item nextItem = items.get(nextItemIndex);
+        Item nextItem = items.get(indexOfNextItem);
 
         result.add(0.0);
-        Inventory resultAfterExclusion = solveExhaustivelyRecursively(nextItemIndex + 1, availableCapacity, result, value);
+        Inventory resultWhenExcluded = solveExhaustivelyRecursively(indexOfNextItem + 1, remainingCapacity, result, value);
 
-        if (nextItem.getWeight() > availableCapacity) {
+        if (nextItem.getWeight() > remainingCapacity) {
             result.remove(result.size() - 1);
-            return resultAfterExclusion;
+            return resultWhenExcluded;
         } else {
             result.set(result.size() - 1, 1.0);
-            Inventory resultAfterInclusion = solveExhaustivelyRecursively(nextItemIndex + 1, availableCapacity - nextItem.getWeight(), result, value + nextItem.getValue());
+            Inventory resultAfterInclusion = solveExhaustivelyRecursively(indexOfNextItem + 1, remainingCapacity - nextItem.getWeight(), result, value + nextItem.getValue());
             result.remove(result.size() - 1);
-            if (resultAfterInclusion.getTotalValue() >= resultAfterExclusion.getTotalValue()) {
+            if (resultAfterInclusion.getTotalValue() >= resultWhenExcluded.getTotalValue()) {
                 return resultAfterInclusion;
             } else {
-                return resultAfterExclusion;
+                return resultWhenExcluded;
             }
         }
     }
