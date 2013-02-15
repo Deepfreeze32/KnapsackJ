@@ -93,6 +93,25 @@ public class Knapsack {
         }
         return total;
     }
+    
+    /**
+     * Calculates the total value given a configuration of items.
+     *
+     * @param amounts The amount taken of each item.
+     * @return The total value of this solution.
+     */
+    public double getTotalWeight(ArrayList<Double> amounts) {
+        double total = 0;
+        if (amounts.size() < items.size()) {
+            for (int i = amounts.size(); i < items.size(); i++) {
+                amounts.add(0.0);
+            }
+        }
+        for (int i = 0; i < amounts.size(); i++) {
+            total += amounts.get(i) * items.get(i).getWeight();
+        }
+        return total;
+    }
 
     /**
      * Function to solve Knapsack using fractional ratios.
@@ -152,23 +171,21 @@ public class Knapsack {
         if (capacity < 0) {
             return new Inventory(this, amounts);
         }
-
-        // build the tables  
+  
         for (int i = 0; i < items.size(); i++) {
             amounts.add(0.0);
             Item item = items.get(i);
-            int benefit = item.getValue();
+            int value = item.getValue();
             int weight = item.getWeight();
             for (int c = capacity; c >= weight; c--) {
-                int newBenefit = benefit + solution[c - weight];
-                if (newBenefit > solution[c]) {
+                int newValue = value + solution[c - weight];
+                if (newValue > solution[c]) {
                     isIncluded[i][c] = true;
-                    solution[c] = newBenefit;
+                    solution[c] = newValue;
                 }
             }
         }
-
-        // construct the solution  
+ 
         int c = capacity;
         int p = 0;
         for (int i = items.size() - 1; i >= 0; i--) {
@@ -211,15 +228,59 @@ public class Knapsack {
         result.add(0.0);
         Inventory resultWhenExcluded = solveExhaustivelyRecursively(indexOfNextItem + 1, remainingCapacity, result, value);
 
+        /*if (nextItem.getWeight() > remainingCapacity) {
+            result.remove(result.size() - 1);
+            return resultWhenExcluded;
+        } else {*/
+            result.set(result.size() - 1, 1.0);
+            Inventory resultWhenIncluded = solveExhaustivelyRecursively(indexOfNextItem + 1, remainingCapacity, result, value + nextItem.getValue());
+            result.remove(result.size() - 1);
+            if (resultWhenIncluded.getTotalValue() >= resultWhenExcluded.getTotalValue() && resultWhenIncluded.getTotalWeight() <= remainingCapacity) {
+                return resultWhenIncluded;
+            } else {
+                return resultWhenExcluded;
+            }
+        //}
+    }
+    
+    /**
+     * The starting point for smarter search.
+     *
+     * @return The Inventory object containing the best solution.
+     */
+    public Inventory solveSmartly() {
+        int availableCapacity = capacity;
+        return solveSmartlyRecursively(0, availableCapacity, new ArrayList<Double>(), 0);
+    }
+
+    /**
+     * The recursive function used to solve Knapsack recursively in a smart manner.
+     *
+     * @param indexOfNextItem The next index to use.
+     * @param remainingCapacity The remaining capacity of the knapsack.
+     * @param result The resulting amounts of items. This is passed around.
+     * @param value The running total.
+     * @return An Inventory object containing the current configuration.
+     */
+    private Inventory solveSmartlyRecursively(int indexOfNextItem, int remainingCapacity, ArrayList<Double> result, int value) {
+        if (indexOfNextItem >= items.size()) {
+            return new Inventory(this, result, value);
+        }
+        
+        Item nextItem = items.get(indexOfNextItem);
+
+        result.add(0.0);
+        Inventory resultWhenExcluded = solveSmartlyRecursively(indexOfNextItem + 1, remainingCapacity, result, value);
+
         if (nextItem.getWeight() > remainingCapacity) {
             result.remove(result.size() - 1);
             return resultWhenExcluded;
         } else {
             result.set(result.size() - 1, 1.0);
-            Inventory resultAfterInclusion = solveExhaustivelyRecursively(indexOfNextItem + 1, remainingCapacity - nextItem.getWeight(), result, value + nextItem.getValue());
+            Inventory resultWhenIncluded = solveSmartlyRecursively(indexOfNextItem + 1, remainingCapacity - nextItem.getWeight(), result, value + nextItem.getValue());
             result.remove(result.size() - 1);
-            if (resultAfterInclusion.getTotalValue() >= resultWhenExcluded.getTotalValue()) {
-                return resultAfterInclusion;
+            if (resultWhenIncluded.getTotalValue() >= resultWhenExcluded.getTotalValue()) {
+                return resultWhenIncluded;
             } else {
                 return resultWhenExcluded;
             }

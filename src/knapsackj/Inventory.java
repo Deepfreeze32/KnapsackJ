@@ -76,6 +76,15 @@ public class Inventory {
     }
 
     /**
+     * Get the total value of the Inventory.
+     *
+     * @return the value of the inventory.
+     */
+    public double getTotalWeight() {
+        return knapsack.getTotalWeight(new ArrayList<Double>(amounts));
+    }
+
+    /**
      * Stringify the Inventory.
      *
      * @return the string
