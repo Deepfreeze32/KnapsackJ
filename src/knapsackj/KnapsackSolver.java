@@ -31,6 +31,14 @@ public class KnapsackSolver {
         ArrayList<Item> best = convertSolution(amounts);
         System.out.println("Value: " + ex.getTotalValue() + " Items: " + best.toString());
     }
+    
+     public void solveSmartly() {
+        Inventory sm = knapsack.solveSmartly();
+        ArrayList<Double> amounts = sm.getAmounts();
+        ArrayList<Item> best = convertSolution(amounts);
+        System.out.println("Value: " + sm.getTotalValue() + " Items: " + best.toString());
+    }
+
 
     public void solveDynamically() {
         Inventory dy = knapsack.solveDynamically();

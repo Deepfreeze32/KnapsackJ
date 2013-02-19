@@ -28,8 +28,10 @@ public class KnapsackJ {
 
         //System.out.println(items.toString());
         KnapsackSolver ks = new KnapsackSolver(items);
-        System.out.println("Exhaustive solution:");
-        ks.solveExhaustively();
+        //System.out.println("Exhaustive solution:");
+        //ks.solveExhaustively();
+        System.out.println("Smart solution:");
+        ks.solveSmartly();
         System.out.println("Dynamic solution:");
         ks.solveDynamically();
         System.out.println("Greedy solution:");
