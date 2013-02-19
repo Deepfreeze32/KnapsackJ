@@ -1,4 +1,4 @@
-package input;
+package knapsackj;
 
 import java.util.ArrayList;
 import knapsackj.Item;

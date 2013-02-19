@@ -1,8 +1,5 @@
 package knapsackj;
 
-import input.CSVParser;
-import input.HardInput;
-
 /**
  * KnapsackJ, the main class. Home of the infamous main function.
  *
