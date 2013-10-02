@@ -4,7 +4,7 @@ package knapsackj;
  * The Item class for KnapsackJ. Implements Comparable so that a collection of
  * items may be sorted.
  *
- * @author tcc10a
+ * @author Deepfreeze32
  */
 public class Item implements Comparable<Item> {
 

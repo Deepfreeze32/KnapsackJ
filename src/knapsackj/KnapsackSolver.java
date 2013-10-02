@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * A simple facade class for KnapsackJ.
  *
- * @author tcc10a
+ * @author Deepfreeze32
  */
 public class KnapsackSolver {
 

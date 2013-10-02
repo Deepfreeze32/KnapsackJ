@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * A generic collection of items. Used for storing a data set.
  *
- * @author tcc10a
+ * @author Deepfreeze32
  */
 public class ItemCollection {
 

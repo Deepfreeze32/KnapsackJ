@@ -7,7 +7,7 @@ import knapsackj.ItemCollection;
 /**
  * A default input class for KnapsackJ. Constructs a data set of 5 items.
  *
- * @author tcc10a
+ * @author Deepfreeze32
  */
 public class HardInput {
 

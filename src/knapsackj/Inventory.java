@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * The Inventory class. Designates a configuration of a knapsack.
  *
- * @author tcc10a
+ * @author Deepfreeze32
  */
 public class Inventory {
 

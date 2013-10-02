@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * The actual Knapsack. Where all the fun happens.
  *
- * @author tcc10a
+ * @author Deepfreeze32
  */
 public class Knapsack {
 

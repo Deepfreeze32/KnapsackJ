@@ -3,7 +3,7 @@ package knapsackj;
 /**
  * KnapsackJ, the main class. Home of the infamous main function.
  *
- * @author tcc10a
+ * @author Deepfreeze32
  */
 public class KnapsackJ {
 

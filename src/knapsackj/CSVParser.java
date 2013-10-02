@@ -15,7 +15,7 @@ import knapsackj.ItemCollection;
  * @source
  * http://stackoverflow.com/questions/5868369/how-to-read-a-large-text-file-line-by-line-in-java
  * @author peter-lawrey
- * @author tcc10a
+ * @author Deepfreeze32
  */
 public class CSVParser {
 
