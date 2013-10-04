@@ -48,7 +48,6 @@ public class HardInput {
         items.add(i3);
         items.add(i4);
         items.add(i5);
-        //System.out.println(items.toString());
     }
 
     public ItemCollection getItems() {
