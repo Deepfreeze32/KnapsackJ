@@ -8,8 +8,15 @@ package knapsackj;
 public class KnapsackJ {
 
     /**
-     * Main. Duh. Command line args will eventually control data sets.
-     *
+     * Command line args will eventually control solution types.
+     * <p>
+     * As it stands, to add or remove solve types, add appropriate logic.
+     * <p>
+     * Example: System.out.println("Exhaustive solution:");
+     *          ks.solveExhaustively();
+     * <p>
+     * Exhaustive solution not used because a complete evaluation of a large dataset is 
+     * very time consuming.
      * @param args the command line arguments
      */
     public static void main(String[] args) {
@@ -23,10 +30,7 @@ public class KnapsackJ {
             items = csv.parse();
         }
 
-        //System.out.println(items.toString());
         KnapsackSolver ks = new KnapsackSolver(items);
-        //System.out.println("Exhaustive solution:");
-        //ks.solveExhaustively();
         System.out.println("Smart solution:");
         ks.solveSmartly();
         System.out.println("Dynamic solution:");
