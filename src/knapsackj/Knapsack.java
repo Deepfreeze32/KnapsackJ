@@ -228,19 +228,14 @@ public class Knapsack {
         result.add(0.0);
         Inventory resultWhenExcluded = solveExhaustivelyRecursively(indexOfNextItem + 1, remainingCapacity, result, value);
 
-        /*if (nextItem.getWeight() > remainingCapacity) {
-            result.remove(result.size() - 1);
+        result.set(result.size() - 1, 1.0);
+        Inventory resultWhenIncluded = solveExhaustivelyRecursively(indexOfNextItem + 1, remainingCapacity, result, value + nextItem.getValue());
+        result.remove(result.size() - 1);
+        if (resultWhenIncluded.getTotalValue() >= resultWhenExcluded.getTotalValue() && resultWhenIncluded.getTotalWeight() <= remainingCapacity) {
+            return resultWhenIncluded;
+        } else {
             return resultWhenExcluded;
-        } else {*/
-            result.set(result.size() - 1, 1.0);
-            Inventory resultWhenIncluded = solveExhaustivelyRecursively(indexOfNextItem + 1, remainingCapacity, result, value + nextItem.getValue());
-            result.remove(result.size() - 1);
-            if (resultWhenIncluded.getTotalValue() >= resultWhenExcluded.getTotalValue() && resultWhenIncluded.getTotalWeight() <= remainingCapacity) {
-                return resultWhenIncluded;
-            } else {
-                return resultWhenExcluded;
-            }
-        //}
+        }
     }
     
     /**
